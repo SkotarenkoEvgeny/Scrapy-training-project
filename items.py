@@ -11,5 +11,12 @@ import scrapy
 class HrfoecastItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    # data for job_title info
+    job_title = scrapy.Field()
+    company_name = scrapy.Field()
+    crawled_date = scrapy.Field()
+    posted_date = scrapy.Field()
+    location = scrapy.Field()
+    job_description = scrapy.Field()
+
 

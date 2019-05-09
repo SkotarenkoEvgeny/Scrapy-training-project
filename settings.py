@@ -15,6 +15,13 @@ SPIDER_MODULES = ['hrfoecast.spiders']
 NEWSPIDER_MODULE = 'hrfoecast.spiders'
 
 
+
+
+FEED_EXPORTERS = {
+    'xlsx': 'scrapy_xlsx.XlsxItemExporter',
+}
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'hrfoecast (+http://www.yourdomain.com)'
 
