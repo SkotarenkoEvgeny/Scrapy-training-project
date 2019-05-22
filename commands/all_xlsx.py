@@ -4,7 +4,7 @@ from scrapy.utils.project import get_project_settings
 from scrapy.crawler import CrawlerProcess
 
 
-class Crawl_allCommand(ScrapyCommand):
+class All_xlsxCommand(ScrapyCommand):
 
     def run(self, args, opts):
         '''

@@ -5,6 +5,9 @@ from hrfoecast.items import HrfoecastItem
 
 
 class GazpromSpider(scrapy.Spider):
+    """
+    scraped data from gazpromvacancy.ru
+    """
     name = 'gazprom'
     allowed_domains = ['gazpromvacancy.ru']
     start_urls = ['https://www.gazpromvacancy.ru/jobs/']

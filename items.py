@@ -18,5 +18,3 @@ class HrfoecastItem(scrapy.Item):
     posted_date = scrapy.Field()
     location = scrapy.Field()
     job_description = scrapy.Field()
-
-

@@ -5,12 +5,14 @@ from hrfoecast.items import HrfoecastItem
 
 
 class HrSpider(scrapy.Spider):
+    """
+    scraped data from hrforecast.de
+    """
     name = 'hrforecast'
     allowed_domains = ['hrforecast.de']
     start_urls = ['https://www.hrforecast.de/company/career/']
 
     def vacancy_data(self, response):
-        print('In vacancy_data ', response.url)
 
         main_selector = '//*[@id="av_section_1"]/div/main/div/div/div[1]/section/div'
         raw_data = response.xpath(main_selector)
@@ -19,7 +21,7 @@ class HrSpider(scrapy.Spider):
 
         # data for job_title info
         scraped_info['job_title'] = \
-        raw_data.xpath('p[1]/strong/text()').extract()[0]
+            raw_data.xpath('p[1]/strong/text()').extract()[0]
 
         # data for company_name info
         scraped_info['company_name'] = HrSpider.name

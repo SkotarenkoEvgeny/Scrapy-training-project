@@ -14,13 +14,14 @@ BOT_NAME = 'hrfoecast'
 SPIDER_MODULES = ['hrfoecast.spiders']
 NEWSPIDER_MODULE = 'hrfoecast.spiders'
 
-# FEED_FORMAT = 'xlsx'
-# FEED_URI = 'temp.xlsx'
-# FEED_EXPORT_ENCODING = 'utf-8'
-#
-# FEED_EXPORTERS = {
-#     'xlsx': 'scrapy_xlsx.XlsxItemExporter',
-# }
+DATABASE = {
+    'drivername': 'postgres',
+    'host': 'localhost',
+    'port': '5432',
+    'username': 'postgres',
+    'password': 'password',
+    'database': 'scrapytest'
+}
 
 COMMANDS_MODULE = 'hrfoecast.commands'
 
