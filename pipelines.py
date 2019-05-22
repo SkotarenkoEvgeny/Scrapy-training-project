@@ -44,7 +44,6 @@ class XlsxPipeline(object):
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 3, item['job_title'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 4, item['location'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 5, item['posted_date'])
-
         return item
 
     def __del__(self):
