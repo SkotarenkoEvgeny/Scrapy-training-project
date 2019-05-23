@@ -8,7 +8,7 @@ class All_xlsxCommand(ScrapyCommand):
 
     def run(self, args, opts):
         '''
-        the comand for srawls all spiders
+        the comand for crawls all spiders
         '''
 
         setting = get_project_settings()

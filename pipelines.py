@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import xlsxwriter
+import xlwt
 
 from hrfoecast.items import HrfoecastItem
 
@@ -23,13 +23,14 @@ class XlsxPipeline(object):
     ctreate xlsx file in spiders folder
     """
     row = 0
-    workbook = xlsxwriter.Workbook('vacancy.xlsx')
-    worksheet = workbook.add_worksheet()
+    workbook = xlwt.Workbook()
+    worksheet = workbook.add_sheet('vacancy', cell_overwrite_ok=True)
+    call_1 = 0
 
     def __init__(self):
         col = 0
         for item_col in HrfoecastItem.fields:
-            XlsxPipeline.worksheet.write(XlsxPipeline.row, col, item_col)
+            XlsxPipeline.worksheet.write(0, col, item_col)
             col += 1
 
     def process_item(self, item, spider):
@@ -44,10 +45,11 @@ class XlsxPipeline(object):
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 3, item['job_title'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 4, item['location'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 5, item['posted_date'])
+
         return item
 
     def __del__(self):
-        XlsxPipeline.workbook.close()
+        XlsxPipeline.workbook.save('vacancy.xlsx')
 
 
 class PosgreePipeline(object):
