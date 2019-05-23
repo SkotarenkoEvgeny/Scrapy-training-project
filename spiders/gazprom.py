@@ -53,19 +53,16 @@ class GazpromSpider(scrapy.Spider):
         temporaly_data = ''
         for item in response.xpath('//*[@id="content-normal"]/article/div[1]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
-            temporaly_data += item.xpath('p').get().replace('<br>',
-                                                            '\n').replace('<p>',
-                                                                          '').replace(
+            temporaly_data += item.xpath('p').get().replace('<p>',
+                                                            '').replace(
                 '</p>', '') + '\n'
         for item in response.xpath('//*[@id="content-normal"]/article/div[2]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
-            temporaly_data += item.xpath('p').get().replace('<br>',
-                                                            '\n').replace('<p>',
-                                                                          '').replace(
+            temporaly_data += item.xpath('p').get().replace('<p>',
+                                                            '').replace(
                 '</p>', '')
         scraped_info['job_description'] = temporaly_data
 
-        # print(scraped_info['job_description'])
         yield scraped_info
 
     def parse(self, response):
