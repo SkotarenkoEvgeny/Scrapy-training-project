@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-import datetime
+import datetime, re
 from hrfoecast.items import HrfoecastItem
 
 
@@ -61,6 +61,7 @@ class GazpromSpider(scrapy.Spider):
             temporaly_data += item.xpath('p').get().replace('<p>',
                                                             '').replace(
                 '</p>', '')
+        temporaly_data = re.sub('<br>', '', temporaly_data)
         scraped_info['job_description'] = temporaly_data
 
         yield scraped_info
