@@ -11,7 +11,6 @@ class GazpromSpider(scrapy.Spider):
     name = 'gazprom'
     allowed_domains = ['gazpromvacancy.ru']
     start_urls = ['https://www.gazpromvacancy.ru/jobs/']
-    g = 0
 
     def vacancy_data(self, response):
 
@@ -53,15 +52,26 @@ class GazpromSpider(scrapy.Spider):
         temporaly_data = ''
         for item in response.xpath('//*[@id="content-normal"]/article/div[1]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
-            temporaly_data += item.xpath('p').get().replace('<p>',
-                                                            '').replace(
-                '</p>', '') + '\n'
+            if item.xpath('ul/li/span') != None:
+                for data in item.xpath('ul/li/span').getall():
+                    data = re.sub('<span>', '', data)
+                    data = re.sub('</span>', '', data)
+                    temporaly_data += data + '\n'
+
+            temporaly_data += item.xpath('p').get() + '\n'
+
         for item in response.xpath('//*[@id="content-normal"]/article/div[2]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
-            temporaly_data += item.xpath('p').get().replace('<p>',
-                                                            '').replace(
-                '</p>', '')
+            if item.xpath('ul/li/span') != None:
+                for data in item.xpath('ul/li/text()').getall():
+                    temporaly_data += data + '\n'
+
+            temporaly_data += item.xpath('p').get() + '\n'
+
         temporaly_data = re.sub('<br>', '', temporaly_data)
+        temporaly_data = re.sub('<p>', '', temporaly_data)
+        temporaly_data = re.sub('</p>', '', temporaly_data)
+
         scraped_info['job_description'] = temporaly_data
 
         yield scraped_info
@@ -72,7 +82,6 @@ class GazpromSpider(scrapy.Spider):
 
         for link in response.xpath(vacancy_selector):
             vacancy_url = 'https://www.gazpromvacancy.ru/' + link.get()
-            # print(vacancy_url)
             yield scrapy.Request(url=vacancy_url, callback=self.vacancy_data)
 
         page_link = response.xpath(
@@ -83,3 +92,5 @@ class GazpromSpider(scrapy.Spider):
             yield scrapy.Request(
                 url='https://www.gazpromvacancy.ru/' + page_link.get(),
                 callback=self.parse)
+
+
