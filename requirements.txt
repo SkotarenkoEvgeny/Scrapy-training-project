@@ -2,3 +2,4 @@ xlwt==1.3.0
 SQLAlchemy==1.3.3
 Scrapy==1.6.0
 psycopg2==2.8.2
+scrapy-user-agents
