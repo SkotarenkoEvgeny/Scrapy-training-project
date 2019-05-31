@@ -12,6 +12,14 @@ class GazpromSpider(scrapy.Spider):
     allowed_domains = ['gazpromvacancy.ru']
     start_urls = ['https://www.gazpromvacancy.ru/jobs/']
 
+    def response_is_ban(self, request, response):
+        # scrapy-proxy-pool function
+        return b'banned' in response.body
+
+    def exception_is_ban(self, request, exception):
+        # scrapy-proxy-pool function
+        return None
+
     def vacancy_data(self, response):
 
         main_selector = '//*[@class="job-container"]'

@@ -12,6 +12,14 @@ class HrSpider(scrapy.Spider):
     allowed_domains = ['hrforecast.de']
     start_urls = ['https://www.hrforecast.de/company/career/']
 
+    def response_is_ban(self, request, response):
+        # scrapy-proxy-pool function
+        return b'banned' in response.body
+
+    def exception_is_ban(self, request, exception):
+        # scrapy-proxy-pool function
+        return None
+
     def vacancy_data(self, response):
 
         main_selector = '//*[@id="av_section_1"]/div/main/div/div/div[1]/section/div'
