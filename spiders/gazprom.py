@@ -60,22 +60,22 @@ class GazpromSpider(scrapy.Spider):
         temporaly_data = ''
         for item in response.xpath('//*[@id="content-normal"]/article/div[1]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
-            if item.xpath('ul/li/span') != None:
-                for data in item.xpath('ul/li/span').getall():
-                    data = re.sub('<span>', '', data)
-                    data = re.sub('</span>', '', data)
+            if item.xpath('ul/li/span|ul/li/div|ul/li|p') != None:
+                for data in item.xpath('ul/li/span|ul/li/div/text()|ul/li/text()|p').getall():
                     temporaly_data += data + '\n'
 
-            temporaly_data += item.xpath('p').get() + '\n'
+            #temporaly_data += item.xpath('p').get() + '\n'
 
         for item in response.xpath('//*[@id="content-normal"]/article/div[2]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
-            if item.xpath('ul/li/span') != None:
-                for data in item.xpath('ul/li/text()').getall():
+            if item.xpath('ul/li/span|ul/li/div|ul/li|p') != None:
+                for data in item.xpath('ul/li/span|ul/li/div/text()|ul/li/text()|p').getall():
                     temporaly_data += data + '\n'
 
-            temporaly_data += item.xpath('p').get() + '\n'
+            #temporaly_data += item.xpath('p').get() + '\n'
 
+        temporaly_data = re.sub('<span>', '', temporaly_data)
+        temporaly_data = re.sub('</span>', '', temporaly_data)
         temporaly_data = re.sub('<br>', '', temporaly_data)
         temporaly_data = re.sub('<p>', '', temporaly_data)
         temporaly_data = re.sub('</p>', '', temporaly_data)
