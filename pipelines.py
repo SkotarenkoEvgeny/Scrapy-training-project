@@ -43,8 +43,10 @@ class XlsxPipeline(object):
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 2,
                                      item['job_description'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 3, item['job_title'])
-        XlsxPipeline.worksheet.write(XlsxPipeline.row, 4, item['location'])
-        XlsxPipeline.worksheet.write(XlsxPipeline.row, 5, item['posted_date'])
+        XlsxPipeline.worksheet.write(XlsxPipeline.row, 4, item['job_url'])
+        XlsxPipeline.worksheet.write(XlsxPipeline.row, 5, item['location'])
+        XlsxPipeline.worksheet.write(XlsxPipeline.row, 6, item['posted_date'])
+
 
         return item
 

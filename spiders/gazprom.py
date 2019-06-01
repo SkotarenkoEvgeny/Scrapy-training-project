@@ -27,6 +27,8 @@ class GazpromSpider(scrapy.Spider):
 
         scraped_info = HrfoecastItem()
 
+        # data for job_url info
+        scraped_info['job_url'] = response.url
         # data for job_title info
         scraped_info['job_title'] = raw_data.xpath(
             '//*[@id="content-normal"]/article/h1/text()').extract()[0]

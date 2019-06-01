@@ -27,6 +27,8 @@ class HrSpider(scrapy.Spider):
 
         scraped_info = HrfoecastItem()
 
+        # data for job_url info
+        scraped_info['job_url'] = response.url
         # data for job_title info
         scraped_info['job_title'] = \
             raw_data.xpath('p[1]/strong/text()').extract()[0]
