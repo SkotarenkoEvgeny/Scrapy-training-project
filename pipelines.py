@@ -25,7 +25,7 @@ class XlsxPipeline(object):
     row = 0
     workbook = xlwt.Workbook()
     worksheet = workbook.add_sheet('vacancy', cell_overwrite_ok=True)
-    call_1 = 0
+
 
     def __init__(self):
         col = 0
