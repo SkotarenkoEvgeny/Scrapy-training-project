@@ -6,11 +6,12 @@ from hrfoecast.models import db_connect
 from scrapy.commands import ScrapyCommand
 from scrapy.utils.project import get_project_settings
 
+
 class Out_posgreeCommand(ScrapyCommand):
 
     def run(self, args, opts):
         '''
-        the comand for crawls all spiders
+        the comand for import data from DB to xlsx file
         '''
 
         engine = db_connect()
@@ -20,7 +21,9 @@ class Out_posgreeCommand(ScrapyCommand):
         col_xlsx = 0
         workbook = xlwt.Workbook()
         worksheet = workbook.add_sheet('vacancy', cell_overwrite_ok=True)
-        heading = ('namber', 'job_title', 'company_name', 'location', 'crawled_date', 'posted_date', 'job_description')
+        heading = (
+        'number', 'job_title', 'company_name', 'location', 'crawled_date',
+        'posted_date', 'job_description', 'job_url')
         for item_col in heading:
             worksheet.write(0, col_xlsx, item_col)
             col_xlsx += 1
@@ -29,15 +32,7 @@ class Out_posgreeCommand(ScrapyCommand):
 
         for row in result:
             row_xlsx += 1
-            worksheet.write(row_xlsx, 0, row[0])
-            worksheet.write(row_xlsx, 1, row[1])
-            worksheet.write(row_xlsx, 2, row[2])
-            worksheet.write(row_xlsx, 3, row[3])
-            worksheet.write(row_xlsx, 4, row[4])
-            worksheet.write(row_xlsx, 5, row[5])
-            worksheet.write(row_xlsx, 6, row[6])
-            print(row)
-            print(type(row))
-            print(len(row))
+            for i in range(len(heading)):
+                worksheet.write(row_xlsx, i, row[i])
 
         workbook.save('vacancy_from_DB.xlsx')

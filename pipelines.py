@@ -26,7 +26,6 @@ class XlsxPipeline(object):
     workbook = xlwt.Workbook()
     worksheet = workbook.add_sheet('vacancy', cell_overwrite_ok=True)
 
-
     def __init__(self):
         col = 0
         for item_col in HrfoecastItem.fields:
@@ -46,7 +45,6 @@ class XlsxPipeline(object):
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 4, item['job_url'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 5, item['location'])
         XlsxPipeline.worksheet.write(XlsxPipeline.row, 6, item['posted_date'])
-
 
         return item
 

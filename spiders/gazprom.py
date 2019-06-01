@@ -66,7 +66,7 @@ class GazpromSpider(scrapy.Spider):
                 for data in item.xpath('ul/li/span|ul/li/div/text()|ul/li/text()|p').getall():
                     temporaly_data += data + '\n'
 
-            #temporaly_data += item.xpath('p').get() + '\n'
+
 
         for item in response.xpath('//*[@id="content-normal"]/article/div[2]'):
             temporaly_data += item.xpath('h2/text()').get() + '\n'
@@ -74,7 +74,7 @@ class GazpromSpider(scrapy.Spider):
                 for data in item.xpath('ul/li/span|ul/li/div/text()|ul/li/text()|p').getall():
                     temporaly_data += data + '\n'
 
-            #temporaly_data += item.xpath('p').get() + '\n'
+
 
         temporaly_data = re.sub('<span>', '', temporaly_data)
         temporaly_data = re.sub('</span>', '', temporaly_data)

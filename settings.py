@@ -68,7 +68,7 @@ ROBOTSTXT_OBEY = True
 #    'hrfoecast.middlewares.HrfoecastDownloaderMiddleware': 543,
 # }
 
-"""
+
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
     'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
@@ -76,7 +76,7 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
 }
 
-"""
+
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
 # EXTENSIONS = {

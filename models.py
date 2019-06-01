@@ -39,3 +39,4 @@ class Deals(DeclarativeBase):
     crawled_date = Column('crawled_date', String, nullable=True)
     posted_date = Column('posted_date', String, nullable=True)
     job_description = Column('job_description', String, nullable=True)
+    job_url = Column('job_url', String, nullable=True)

@@ -10,9 +10,13 @@ For the inctallation you can download this repositori and run in curent folder t
 
 After succesful instalation you can use folloving commands in the bash:
 	
-	scrapy all_posgree   -  save the data to PSQL table 'vacancy' forom hrforecast and gazprom at the same time
+	scrapy all_posgree   -  will save the data to PSQL table 'vacancy' forom hrforecast and gazprom at the same time
 
-	scrapy all_xlsx   -  save the data to xlsx file 'vacancy' forom hrforecast and gazprom at the same time
+	scrapy all_xlsx   -  will save the data to xlsx file 'vacancy' forom hrforecast and gazprom at the same time
 
 You can use the in-build scrapy commends for exporting to following formats: JSON, JSON lines, CSV, XML
 For example: scrapy crawl gazprom -o temp.csv
+
+For the viewing the data from Posgree database you can use folloving commands in the bash:
+
+	scrapy out_posgree  -  will create vacancy_from_DB.xlsx file
