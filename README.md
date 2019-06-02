@@ -18,7 +18,7 @@ For the installation you can download this repository and run in a curent folder
 
 After successful installation you can use following commands in the bash:
 
-	scrapy all_posgree   -  will save the data to PSQL table 'vacancy' from hrforecast and gazprom at the same time\
+	scrapy all_posgree   -  will save the data to PSQL table 'vacancy' from hrforecast and gazprom at the same time
 
 	scrapy all_xlsx   -  will save the data to xlsx file 'vacancy' from hrforecast and gazprom at the same time
 
